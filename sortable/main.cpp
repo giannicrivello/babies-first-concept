@@ -9,9 +9,11 @@ struct Foo {
     int val = 0;
 };
 
+// these funcitons are required to satisfy tottaly_ordered
 auto operator <=>(const Foo &a1, const Foo &a2) { return a1.val <=> a2.val; }
 auto operator ==(const Foo &a1, const Foo &a2) { return a1.val == a2.val; }
 
+//concept tottaly_ordered used as type for T
 template<std::totally_ordered T, std::size_t SIZE>
 struct vec {
     T data[SIZE];
